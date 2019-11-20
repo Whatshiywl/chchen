@@ -4,6 +4,7 @@ import { BracketComponent } from './bracket.component';
 @NgModule({
     imports: [ ],
     declarations: [ BracketComponent ],
-    providers: [ ]
+    providers: [ ],
+    exports: [ BracketComponent ]
 })
 export class BracketModule {}
