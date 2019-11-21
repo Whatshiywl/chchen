@@ -4,4 +4,5 @@ export interface Message {
 
 export interface Match {
     id: string;
+    players: string[];
 }

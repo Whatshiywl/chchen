@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Param } from '@nestjs/common';
+import { Controller, Get, Put, Param, Body } from '@nestjs/common';
 import { MatchService } from './match.service';
 
 @Controller('match')
@@ -9,8 +9,8 @@ export class MatchController {
     ) { }
 
     @Put()
-    createMatch() {
-        return this.matchService.createMatch();
+    createMatch(@Body('player1') player1: string, @Body('player2') player2: string) {
+        return this.matchService.createMatch(player1, player2);
     }
 
     @Get('/:id')
