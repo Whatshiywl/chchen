@@ -1,6 +1,6 @@
 import { Piece } from './piece.class';
-import { BoardPosition, Board } from '../board.class';
-import { PieceColor } from './piece.interface';
+import { Board } from '../board.class';
+import { BoardPosition } from '@chchen/api-interfaces';
 
 export class Pawn extends Piece {
 

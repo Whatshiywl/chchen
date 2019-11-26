@@ -1,5 +1,6 @@
 import { PieceInterface, PieceColor } from './piece.interface';
-import { Board, BoardPosition } from '../board.class';
+import { Board } from '../board.class';
+import { BoardPosition } from '@chchen/api-interfaces';
 
 export abstract class Piece implements PieceInterface {
 

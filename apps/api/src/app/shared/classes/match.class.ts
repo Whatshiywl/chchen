@@ -1,6 +1,6 @@
-import { Board, BoardPosition } from './board.class';
+import { Board } from './board.class';
 import { PieceColor } from './pieces/piece.interface';
-import { MatchInterface } from '@chchen/api-interfaces';
+import { MatchInterface, BoardPosition } from '@chchen/api-interfaces';
 import * as uuid from 'uuid/v1';
 import * as moment from 'moment';
 
@@ -9,9 +9,9 @@ export class Match implements MatchInterface {
     readonly id: string;
     readonly players: string[];
     readonly timestamp: string;
+    readonly moves: [BoardPosition, BoardPosition][];
     private board: Board;
     private turn: PieceColor;
-    private turns: number;
 
     constructor(
         w: string,
@@ -20,9 +20,9 @@ export class Match implements MatchInterface {
         this.id = uuid();
         this.players = [w, b];
         this.timestamp = moment().format('YYYYMMDDHHmmssSSS');
+        this.moves = [];
         this.board = new Board();
         this.turn = PieceColor.WHITE;
-        this.turns = 0;
     }
 
     play(from: BoardPosition, to: BoardPosition) {
@@ -40,7 +40,7 @@ export class Match implements MatchInterface {
         this.board.set(from, undefined);
         this.board.set(to, pieceToMove);
         this.turn = -this.turn;
-        this.turns++;
+        this.moves.push([from, to]);
     }
     
 }

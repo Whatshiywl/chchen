@@ -1,8 +1,7 @@
 import { Piece } from './pieces/piece.class';
 import { Pawn } from './pieces/pawn.class';
 import { PieceColor } from './pieces/piece.interface';
-
-export type BoardPosition = [number, number];
+import { BoardPosition } from '@chchen/api-interfaces';
 
 export class Board {
 
