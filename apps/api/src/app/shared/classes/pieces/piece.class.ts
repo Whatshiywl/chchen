@@ -3,7 +3,17 @@ import { Board, BoardPosition } from '../board.class';
 
 export abstract class Piece implements PieceInterface {
 
-    constructor(public readonly color: PieceColor) { }
+    color: PieceColor;
+
+    constructor() { }
+
+    getColor() {
+        return this.color;
+    }
+
+    setColor(color: PieceColor) {
+        this.color = color;
+    }
 
     abstract getPossibleMoves(position: BoardPosition, board?: Board): BoardPosition[];
 

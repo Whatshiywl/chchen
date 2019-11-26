@@ -6,8 +6,8 @@ export class Pawn extends Piece {
 
     private firstMove: boolean;
 
-    constructor(color: PieceColor) {
-        super(color);
+    constructor() {
+        super();
         this.firstMove = true;
     }
 

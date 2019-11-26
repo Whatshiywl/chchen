@@ -1,12 +1,12 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { Match } from '@chchen/api-interfaces';
-import * as moment from 'moment';
+import { MatchInterface } from '@chchen/api-interfaces';
+import { Match } from '../shared/classes/match.class';
 
 @Injectable()
 export class MatchService {
 
     private matches: {
-        [id: string]: Match
+        [id: string]: MatchInterface
     };
 
     constructor() {
@@ -14,14 +14,9 @@ export class MatchService {
     }
 
     createMatch(player1: string, player2: string) {
-        const datetime = moment().format('YYYYMMDDHHmmssSSS');
-        const id = `${datetime}_${player1}_vs_${player2}`;
-        const match = {
-            id,
-            players: [ player1, player2 ]
-        } as Match;
-        this.matches[id] = match;
-        return id;
+        const match = new Match(player1, player2);
+        this.matches[match.id] = match;
+        return match.id;
     }
 
     getMatch(id: string) {

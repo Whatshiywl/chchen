@@ -6,7 +6,8 @@ export enum PieceColor {
 
 export interface PieceInterface {
 
-    readonly color: PieceColor;
+    getColor: () => PieceColor;
+    setColor: (color: PieceColor) => void;
 
     getPossibleMoves: (position: BoardPosition, board?: Board) => BoardPosition[];
 
