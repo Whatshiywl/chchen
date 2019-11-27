@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Param } from '@nestjs/common';
+import { Controller, Get, Put, Param, Post } from '@nestjs/common';
 import { MatchService } from './match.service';
 
 @Controller('match')
@@ -17,5 +17,12 @@ export class MatchController {
     getMatch(@Param('id') id: string) {
         return this.matchService.getMatch(id);
     }
+
+    @Post('/:id/move/:from/:to')
+    postMove(@Param('id') id: string, @Param('from') from: string, @Param('to') to: string) {
+        return this.matchService.move(id, from, to);
+    }
+
+
 
 }

@@ -41,6 +41,8 @@ export class Match implements MatchInterface {
         this.board.set(to, pieceToMove);
         this.turn = -this.turn;
         this.moves.push([from, to]);
+        this.board.updateAscii();
+        return this;
     }
     
 }
