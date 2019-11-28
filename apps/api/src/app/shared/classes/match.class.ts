@@ -42,6 +42,7 @@ export class Match implements MatchInterface {
         if (!allowedMovesForPiece.find(pos => pos[0] === to[0] && pos[1] === to[1])) throw new HttpException(`@${x0},${y0} -> $@${x1},${y1} is not a valid move`, HttpStatus.FORBIDDEN);
         this.board.set(from, undefined);
         this.board.set(to, pieceToMove);
+        pieceToMove.onMove();
         this.turn = -this.turn;
         this.moves.push([from, to]);
         this.board.updateAscii();

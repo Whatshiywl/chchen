@@ -2,6 +2,7 @@ import { Piece } from './pieces/piece.class';
 import { Pawn } from './pieces/pawn.class';
 import { PieceColor } from './pieces/piece.interface';
 import { BoardPosition } from '@chchen/api-interfaces';
+import { Rook } from './pieces/rook.class';
 
 export class Board {
 
@@ -17,7 +18,7 @@ export class Board {
                 let piece: Piece;
                 if ([0, 7].includes(row)) {
                     if ([0, 7].includes(col)) {
-                        // piece = new Rook();
+                        piece = new Rook();
                     } else if ([1, 6].includes(col)) {
                         // piece = new Knight();
                     } else if ([2, 5].includes(col)) {
@@ -44,7 +45,9 @@ export class Board {
     }
 
     get([ x, y ]: BoardPosition) {
-        return this.squares[x][y];
+        const col = this.squares[x];
+        if (!col) return null;
+        return col[y];
     }
 
     set([ x, y ]: BoardPosition, piece: Piece) {

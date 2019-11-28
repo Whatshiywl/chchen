@@ -33,6 +33,10 @@ export class Pawn extends Piece {
         return moves;
     }
 
+    onMove() {
+        this.firstMove = false;
+    }
+
     toString() {
         return this.color === PieceColor.WHITE ? '♙' : '♟';
     }
