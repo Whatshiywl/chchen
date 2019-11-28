@@ -10,6 +10,8 @@ export interface PieceInterface {
     getColor: () => PieceColor;
     setColor: (color: PieceColor) => void;
 
-    getPossibleMoves: (position: BoardPosition, board?: Board) => BoardPosition[];
+    getPossibleMoves: (board: Board, position: BoardPosition) => BoardPosition[];
+
+    toString: () => string;
 
 }

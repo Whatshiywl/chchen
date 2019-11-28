@@ -16,6 +16,10 @@ export abstract class Piece implements PieceInterface {
         this.color = color;
     }
 
-    abstract getPossibleMoves(position: BoardPosition, board?: Board): BoardPosition[];
+    abstract getPossibleMoves(board: Board, position: BoardPosition): BoardPosition[];
+
+    toString(): string {
+        return this.color === PieceColor.WHITE ? 'W' : 'B';
+    }
 
 }

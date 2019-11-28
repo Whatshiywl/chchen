@@ -62,19 +62,7 @@ export class Board {
 
     updateAscii() {
         this.ascii = [' |1|2|3|4|5|6|7|8|'].concat(this.squares.map((col, i) => {
-            return `${String.fromCharCode(i + 65)}|` + col.map(piece => {
-                let pLetter = 'u';
-                if (!piece) return ' ';
-                else if (piece instanceof Pawn) pLetter = 'o';
-                // else if (piece instanceof Rook) pLetter = 'h';
-                // else if (piece instanceof Knight) pLetter = 'j';
-                // else if (piece instanceof Bishop) pLetter = 'b';
-                // else if (piece instanceof Queen) pLetter = 'q';
-                // else if (piece instanceof King) pLetter = 'k';
-
-                if (piece.getColor() === PieceColor.BLACK) pLetter = pLetter.toUpperCase();
-                return pLetter;
-            }).join('|') + '|';
+            return `${String.fromCharCode(i + 65)}|` + col.map(piece => piece ? piece.toString() : ' ').join('|') + '|';
         }));
     }
 

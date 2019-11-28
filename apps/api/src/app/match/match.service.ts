@@ -49,7 +49,7 @@ export class MatchService {
             x = Math.floor(posNum / 8);
             y = posNum % 8;
         }
-        if (!(x + 1) || !(y + 1)) throw new Error(`${posStr} -> ${x},${y} not a valid position`);
+        if (!(x + 1) || !(y + 1)) throw new HttpException(`${posStr} -> ${x},${y} not a valid position`, HttpStatus.BAD_REQUEST);
         return [ x, y ] as BoardPosition;
     }
 
