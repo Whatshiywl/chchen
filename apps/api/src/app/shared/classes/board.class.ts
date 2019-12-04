@@ -3,6 +3,10 @@ import { Pawn } from './pieces/pawn.class';
 import { PieceColor } from './pieces/piece.interface';
 import { BoardPosition } from '@chchen/api-interfaces';
 import { Rook } from './pieces/rook.class';
+import { Knight } from './pieces/knight.class';
+import { Bishop } from './pieces/bishop.class';
+import { Queen } from './pieces/queen.class';
+import { King } from './pieces/king.class';
 
 export class Board {
 
@@ -20,13 +24,13 @@ export class Board {
                     if ([0, 7].includes(col)) {
                         piece = new Rook();
                     } else if ([1, 6].includes(col)) {
-                        // piece = new Knight();
+                        piece = new Knight();
                     } else if ([2, 5].includes(col)) {
-                        // piece = new Bishop();
+                        piece = new Bishop();
                     } else if (col === 3) {
-                        // piece = new Queen();
+                        piece = new Queen();
                     } else {
-                        // piece = new King();
+                        piece = new King();
                     }
                 } else if ([1, 6].includes(row)) {
                     piece = new Pawn();
@@ -61,6 +65,10 @@ export class Board {
             y,     // bottom
             x      // left
         ];
+    }
+
+    isInside([ x, y ]: BoardPosition) {
+        return x >= 0 && x <= 7 && y >= 0 && y <= 7;
     }
 
     updateAscii() {

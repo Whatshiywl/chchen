@@ -19,6 +19,10 @@ export class MatchService {
         return match.id;
     }
 
+    getMatches() {
+        return Object.keys(this.matches);
+    }
+
     getMatch(id: string) {
         const match = this.matches[id];
         if (match) return match;
