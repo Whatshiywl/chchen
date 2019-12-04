@@ -1,16 +1,24 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, HttpService } from '@nestjs/common';
 import { BoardPosition } from '@chchen/api-interfaces';
 import { Match } from '../shared/classes/match.class';
+import { Player } from '../shared/classes/player.class';
+import { PlayerService } from '../player/player.service';
 
 @Injectable()
 export class MatchService {
+
+    readonly timeout: number;
 
     private matches: {
         [id: string]: Match
     };
 
-    constructor() {
+    constructor(
+        private httpService: HttpService,
+        private playerService: PlayerService
+    ) {
         this.matches = { };
+        this.timeout = 60*1000;
     }
 
     createMatch(player1: string, player2: string) {
@@ -34,6 +42,32 @@ export class MatchService {
         const from = this.stringToBoardPosition(fromStr);
         const to = this.stringToBoardPosition(toStr);
         return match.play(from, to);
+    }
+
+    async queryPlayer(matchId: string, player: Player) {
+        const match = this.getMatch(matchId);
+        const response = await this.httpService.post<{ from: string, to: string }>(player.url, match, {
+            timeout: this.timeout
+        }).toPromise();
+        const { from, to } = response.data;
+        return this.move(matchId, from, to);
+    }
+
+    async startMatch(matchId: string) {
+        const match = this.getMatch(matchId);
+        let turn = 0;
+        while (true) {
+            let playerId = match.players[turn];
+            const player = this.playerService.getPlayer(playerId);
+            turn = turn === 0 ? 1 : 0;
+            try {
+                await this.queryPlayer(matchId, player);
+            } catch (error) {
+                playerId = match.players[turn];
+                match.setWinner(playerId);
+                break;
+            }
+        }
     }
 
     // 2,6 => [ 2, 6 ]

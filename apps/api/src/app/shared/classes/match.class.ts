@@ -13,6 +13,7 @@ export class Match implements MatchInterface {
     readonly moves: [BoardPosition, BoardPosition][];
     private board: Board;
     private turn: PieceColor;
+    private winner: string;
 
     constructor(
         w: string,
@@ -47,6 +48,11 @@ export class Match implements MatchInterface {
         this.moves.push([from, to]);
         this.board.updateAscii();
         return this;
+    }
+
+    setWinner(playerId: string) {
+        if (this.winner) throw new HttpException(`Winner already set to ${this.winner}`, HttpStatus.CONFLICT);
+        this.winner = playerId;
     }
     
 }

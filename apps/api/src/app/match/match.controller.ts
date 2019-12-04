@@ -9,7 +9,10 @@ export class MatchController {
     ) { }
 
     @Put('/:white/:black')
-    createMatch(@Param('white') white: string, @Param('black') black: string) {
+    createMatch(
+        @Param('white') white: string,
+        @Param('black') black: string
+    ) {
         return this.matchService.createMatch(white, black);
     }
 
@@ -25,10 +28,18 @@ export class MatchController {
 
 
     @Post('/:id/move/:from/:to')
-    postMove(@Param('id') id: string, @Param('from') from: string, @Param('to') to: string) {
+    postMove(
+        @Param('id') id: string,
+        @Param('from') from: string,
+        @Param('to') to: string
+    ) {
         return this.matchService.move(id, from, to);
     }
 
-
+    @Post('/:id/start')
+    startMatch(@Param('id') id: string) {
+        this.matchService.startMatch(id);
+        return 'OK';
+    }
 
 }
