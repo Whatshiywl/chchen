@@ -1,7 +1,6 @@
 import { Piece } from './pieces/piece.class';
 import { Pawn } from './pieces/pawn.class';
-import { PieceColor } from './pieces/piece.interface';
-import { BoardPosition } from '@chchen/api-interfaces';
+import { BoardPosition, PieceColor } from '@chchen/api-interfaces';
 import { Rook } from './pieces/rook.class';
 import { Knight } from './pieces/knight.class';
 import { Bishop } from './pieces/bishop.class';

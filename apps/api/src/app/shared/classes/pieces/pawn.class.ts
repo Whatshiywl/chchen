@@ -1,14 +1,13 @@
 import { Piece } from './piece.class';
 import { Board } from '../board.class';
-import { BoardPosition } from '@chchen/api-interfaces';
-import { PieceColor } from './piece.interface';
+import { BoardPosition, PieceType, PieceColor } from '@chchen/api-interfaces';
 
 export class Pawn extends Piece {
 
     private firstMove: boolean;
 
     constructor() {
-        super();
+        super(PieceType.Pawn);
         this.firstMove = true;
     }
 

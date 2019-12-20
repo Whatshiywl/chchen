@@ -1,0 +1,5 @@
+<div class="board">
+    <div class="row" *ngFor="let row of board, index as i">
+        <div class="cell {{cell}}" [ngClass]="{'selected-cell': isSelected(i, j)}" *ngFor="let cell of row, index as j" (click)="onCellSelected(i, j)"></div>
+    </div>
+</div>

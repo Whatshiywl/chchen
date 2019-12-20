@@ -24,7 +24,7 @@ export class MatchService {
     createMatch(player1: string, player2: string) {
         const match = new Match(player1, player2);
         this.matches[match.id] = match;
-        return match.id;
+        return match;
     }
 
     getMatches() {

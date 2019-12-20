@@ -1,6 +1,5 @@
 import { Board } from './board.class';
-import { PieceColor } from './pieces/piece.interface';
-import { MatchInterface, BoardPosition } from '@chchen/api-interfaces';
+import { MatchInterface, BoardPosition, PieceColor } from '@chchen/api-interfaces';
 import * as uuid from 'uuid/v1';
 import * as moment from 'moment';
 import { HttpException, HttpStatus } from '@nestjs/common';

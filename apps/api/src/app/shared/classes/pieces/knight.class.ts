@@ -1,9 +1,12 @@
 import { Piece } from './piece.class';
 import { Board } from '../board.class';
-import { BoardPosition } from '@chchen/api-interfaces';
-import { PieceColor } from './piece.interface';
+import { BoardPosition, PieceType, PieceColor } from '@chchen/api-interfaces';
 
 export class Knight extends Piece {
+
+    constructor () {
+        super(PieceType.Knight);
+    }
 
     getPossibleMoves(board: Board, [ x, y ]: BoardPosition) {
         const moves: BoardPosition[] = [];

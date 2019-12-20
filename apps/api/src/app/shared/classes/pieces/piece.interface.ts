@@ -1,9 +1,5 @@
 import { Board } from '../board.class';
-import { BoardPosition } from '@chchen/api-interfaces';
-
-export enum PieceColor {
-    WHITE = 1, BLACK = -1
-}
+import { BoardPosition, PieceColor } from '@chchen/api-interfaces';
 
 export interface PieceInterface {
 

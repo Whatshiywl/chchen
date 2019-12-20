@@ -1,0 +1,91 @@
+
+$dark-square: rgb(92, 92, 92);
+$light-square: rgb(204, 204, 204);
+$selected: darkturquoise;
+$target: lightcoral;
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    background-color: rgb(240, 10, 190);
+    width: calc(8*60px);
+}
+
+.cell {
+    height: 60px;
+    width: 60px;
+}
+
+.selected-cell {
+    background-color: $selected !important;
+}
+
+.target-cell {
+    background-color: light;
+}
+
+.row:nth-child(2n) .cell:nth-child(2n) {
+    background-color: $dark-square;
+}
+
+.row:nth-child(2n + 1) .cell:nth-child(2n + 1) {
+    background-color: $dark-square;
+}
+
+.row:nth-child(2n) .cell:nth-child(2n + 1) {
+    background-color: $light-square;
+}
+
+.row:nth-child(2n + 1) .cell:nth-child(2n) {
+    background-color: $light-square;
+}
+
+/* black pieces */
+.black-queen {
+    background: url('/assets/ChessPiecesArray.png') 0 0;
+}
+
+.black-king {
+    background: url('/assets/ChessPiecesArray.png') -60px 0;
+}
+
+.black-rook {
+    background: url('/assets/ChessPiecesArray.png') 240px 0;
+}
+
+.black-bishop {
+    background: url('/assets/ChessPiecesArray.png') 120px 0;
+}
+
+.black-knight {
+    background: url('/assets/ChessPiecesArray.png') 180px 0;
+}
+
+.black-pawn {
+    background: url('/assets/ChessPiecesArray.png') 60px 0;
+}
+
+/* white pieces */
+.white-queen {
+    background: url('/assets/ChessPiecesArray.png') 0 60px;
+}
+
+.white-king {
+    background: url('/assets/ChessPiecesArray.png') -60px 60px;
+}
+
+.white-rook {
+    background: url('/assets/ChessPiecesArray.png') 240px 60px;
+}
+
+.white-bishop {
+    background: url('/assets/ChessPiecesArray.png') 120px 60px;
+}
+
+.white-knight {
+    background: url('/assets/ChessPiecesArray.png') 180px 60px;
+}
+
+.white-pawn {
+    background: url('/assets/ChessPiecesArray.png') 60px 60px;
+}

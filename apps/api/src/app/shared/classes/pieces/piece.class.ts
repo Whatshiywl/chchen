@@ -1,12 +1,12 @@
-import { PieceInterface, PieceColor } from './piece.interface';
 import { Board } from '../board.class';
-import { BoardPosition } from '@chchen/api-interfaces';
+import { BoardPosition, PieceColor } from '@chchen/api-interfaces';
+import { PieceInterface } from './piece.interface';
 
 export abstract class Piece implements PieceInterface {
 
     color: PieceColor;
 
-    constructor() { }
+    constructor(readonly type) { }
 
     getColor() {
         return this.color;
